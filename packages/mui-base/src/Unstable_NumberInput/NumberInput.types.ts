@@ -12,48 +12,53 @@ export interface NumberInputRootSlotPropsOverrides {}
 export interface NumberInputInputSlotPropsOverrides {}
 export interface NumberInputStepperButtonSlotPropsOverrides {}
 
-export type NumberInputOwnProps = Omit<UseNumberInputParameters, 'error'> & {
-  /**
-   * Trailing adornment for this input.
-   */
-  endAdornment?: React.ReactNode;
-  /**
-   * If `true`, the `input` will indicate an error by setting the `aria-invalid` attribute on the input and the `Mui-error` class on the root element.
-   */
-  error?: boolean;
-  /**
-   * The id of the `input` element.
-   */
-  id?: string;
-  /**
-   * The props used for each slot inside the NumberInput.
-   * @default {}
-   */
-  slotProps?: {
-    root?: SlotComponentProps<'div', NumberInputRootSlotPropsOverrides, NumberInputOwnerState>;
-    input?: SlotComponentProps<'input', NumberInputInputSlotPropsOverrides, NumberInputOwnerState>;
-    incrementButton?: SlotComponentProps<
-      'button',
-      NumberInputStepperButtonSlotPropsOverrides,
-      NumberInputOwnerState
-    >;
-    decrementButton?: SlotComponentProps<
-      'button',
-      NumberInputStepperButtonSlotPropsOverrides,
-      NumberInputOwnerState
-    >;
+export type NumberInputOwnProps = Omit<UseNumberInputParameters, 'error'> &
+  Pick<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'> & {
+    /**
+     * Trailing adornment for this input.
+     */
+    endAdornment?: React.ReactNode;
+    /**
+     * If `true`, the `input` will indicate an error by setting the `aria-invalid` attribute on the input and the `Mui-error` class on the root element.
+     */
+    error?: boolean;
+    /**
+     * The id of the `input` element.
+     */
+    id?: string;
+    /**
+     * The props used for each slot inside the NumberInput.
+     * @default {}
+     */
+    slotProps?: {
+      root?: SlotComponentProps<'div', NumberInputRootSlotPropsOverrides, NumberInputOwnerState>;
+      input?: SlotComponentProps<
+        'input',
+        NumberInputInputSlotPropsOverrides,
+        NumberInputOwnerState
+      >;
+      incrementButton?: SlotComponentProps<
+        'button',
+        NumberInputStepperButtonSlotPropsOverrides,
+        NumberInputOwnerState
+      >;
+      decrementButton?: SlotComponentProps<
+        'button',
+        NumberInputStepperButtonSlotPropsOverrides,
+        NumberInputOwnerState
+      >;
+    };
+    /**
+     * The components used for each slot inside the InputBase.
+     * Either a string to use a HTML element or a component.
+     * @default {}
+     */
+    slots?: NumberInputSlots;
+    /**
+     * Leading adornment for this input.
+     */
+    startAdornment?: React.ReactNode;
   };
-  /**
-   * The components used for each slot inside the InputBase.
-   * Either a string to use a HTML element or a component.
-   * @default {}
-   */
-  slots?: NumberInputSlots;
-  /**
-   * Leading adornment for this input.
-   */
-  startAdornment?: React.ReactNode;
-};
 
 export interface NumberInputSlots {
   /**
